@@ -1,0 +1,374 @@
+~~~~~~~~~~~~***Grep command in Unix***~~~~~~~~~~~~~~
+                     
+--> -c: This prints only a count of the lines that match a pattern
+--> -h: Display the matched lines, but do not display the filenames.
+--> -l: Displays list of a filenames only.
+--> -n: Display the matched lines and their line numbers.
+--> -v: This prints out all the lines that do not matches the pattern
+--> -e: Specifies expression with this option. Can use multiple times.
+--> -o:Print only the matched parts of a matching line, with each such part on a
+separate output line.
+-->user@saniya:~$ grep -h "unix" grepfile1.txt
+linux unix are commands
+this is unix
+-->user@saniya:~$ grep -h "is" grepfile1.txt
+rgukt is one of the greatest university
+this is unix
+-->user@saniya:~$ grep -h "linux" grepfile1.txt
+linux unix aere commands
+-->user@saniya:~$ grep -v "unix" grepfile.txt
+grep: grepfile.txt: No such file or directory
+-->user@saniya:~$ grep -v "unix" grepfile1.txt
+rgukt is one of the greatest university
+welcome to ubuntu
+
+-->user@saniya:~$ grep -o 'o' grepfile1.txt
+o
+o
+o
+o
+o
+-->user@saniya:~$ grep -o 'is' grepfile1.txt
+is
+is
+is
+-->user@saniya:~$ grep -o "linux" grepfile1.txt
+linux
+
+
+~~~~~~~~~~***Sed Command in Unix***~~~~~~~~~~~~
+                      
+-->SED is a powerful text stream editor. Can do insertion, deletion,
+search and replace(substitution).
+-->SED command in unix supports regular expression which allows it
+perform complex pattern matching.
+-->user@saniya:~$ cat >file1.txt
+febraury
+may
+june       
+august
+december
+january
+march
+april
+may
+november
+december
+
+-->user@saniya:~/Desktop/IT WORKSHOP$ sed 's/january/febraury/' file1.txt
+febraury
+june 
+august
+december
+febraury
+march
+april
+may
+november
+december
+
+-->user@saniya:~$ sed '/one/d' grepfile1.txt
+linux unix aere commands
+this is unix
+welcome to ubuntu
+
+-->user@saniya:~$ sed 's/one/UNIX/' grepfile1.txt
+linux unix aere commands
+rgukt is UNIX of the greatest university
+this is unix
+welcome to ubuntu
+
+-->user@saniya:~$ sed 's/unix/UNIX/' grepfile1.txt
+linux UNIX aere commands
+rgukt is one of the greatest university
+this is UNIX
+welcome to ubuntu
+
+-->user@saniya:~$ sed 's/RGUKT/rgukt/' grepfile1.txt
+linux unix aere commands
+rgukt is one of the greatest university
+this is unix
+welcome to ubuntu
+
+-->user@saniya:~$ sed 's/rgukt/RGUKT/' grepfile1.txt
+linux unix aere commands
+RGUKT is one of the greatest university
+this is unix
+welcome to ubuntu
+
+
+~~~~~~~~~~~~***Sort Command***~~~~~~~~~~~~~~
+                      
+--> -o: Specifies an output file for the sorted data.
+Functionally equivalent to redirecting output to a file.
+--> -r: Sorts data in reverse order (descending).
+--> -n: Sorts a file numerically (interprets data as numbers).
+--> -nr: Sorts a file with numeric data in reverse order.
+Combines -n and -r options.
+--> -k: Sorts a table based on a specific column number.
+--> -c: Checks if the file is already sorted and reports any
+disorder.
+--> -u: Sorts and removes duplicate lines, providing a unique
+sorted list.
+--> -M: Sorts by month names.      
+
+-->user@saniya:~$ cat >file1.txt
+febraury
+june 
+august
+december
+january
+march
+april
+may
+november
+december
+
+-->user@saniya:~$ sort file1.txt
+april
+august
+december
+december
+febraury
+january
+june 
+march
+may
+november
+-->user@saniya:~$ cat >number.txt
+01
+45
+12
+23
+45
+89
+56
+22
+44
+12
+11
+-->user@saniya:~$ sort number.txt
+01
+12
+12
+22
+23
+44
+45
+45
+56
+89
+-->user@saniya:~$ sort -u file1.txt
+april
+august
+december
+febraury
+january
+june 
+march
+may
+november
+-->user@saniya:~$ sort -u number.txt
+01
+12
+22
+23
+44
+45
+56
+89
+
+~~~~~~~~~~~~***chmod Command***~~~~~~~~~~~~
+
+-->In Unix operating systems, the chmod command is used to change the access mode of a file. The name is an abbreviation of changemode. 
+
+-->Grant execute permission to the owner:
+chmod u+x filename
+chmod u-x filename
+Remove write permission for group and others:
+chmod go-w filename
+                        
+-->user@saniya:~$ cat >awkfile.txt
+Shaik saniya id b200929
+kallem lavanya id b201018
+paisa rajnikanth id b201109
+Ganapathi Sowmya id b200465
+
+~~~~~~~~~~~~~***AWK command in unix***~~~~~~~~~~
+                       
+-->user@saniya:~$ awk '{print $1,$2}' awkfile.txt
+kallem lavanya
+Shaik saniya
+paisa rajnikanth
+Ganapathi Sowmya
+-->user@saniya:~$ awk '{print $1,$2,$3}' awkfile.txt
+kallem lavanya id
+paisa rajnikanth id
+Shaik saniya id
+Ganapathi Sowmya id
+-->user@saniya:~$ awk '{print $1,$2,$3,$4}' awkfile.txt
+Shaik saniya id b200929
+kallem lavanya id b2010118
+paisa rajnikanth id b201109
+Ganapathi Sowmya id b200465
+-->user@saniya:~$ awk '{print $2}' awkfile.txt
+lavanya
+rajnikanth
+saniya
+sowmya
+-->user@saniya:~$ awk '/saniya/ {print}' awkfile.txt
+-->user@saniya:~$ awk '/saniya/ {print $2}' awkfile.txt
+-->user@saniya:~$ awk '{print NR,$1}' awkfile.txt
+1 kallem
+2 shaik
+3 Ganapathi
+-->user@saniya:~$ awk '/saniya/ {print}' awkfile.txt
+-->user@saniya:~$ awk '/saniya/ {print}' awkfile.txt
+shaik saniya id b200929
+-->user@saniya:~$ awk '/saniya/ {print}' awkfile.txt
+kallem lavanya id b201018
+-->user@saniya:~$ awk '{print NR}' awkfile.txt
+1
+2
+3
+
+-->user@saniya:~$ awk '{print nr $0}' awkfile.txt
+kallem lavanya id b201018
+shaik saniya id b200929
+Ganapathi Sowmya id b200465
+-->user@saniya:~$ awk '{print nr,$0}' awkfile.txt
+ kallem lavanya id b2010118
+ paisa rajnikanth id b201109
+Ganapathi Sowmya id b201014
+-->user@saniya:~$ awk '{print nr,$0}' awkfile.txt
+ kallem lavanya id b2010118
+ paisa rajnikanth id b201109
+Ganapathi Sowmya id b201014
+-->user@saniya:~$ awk '{print nr $1}' awkfile.txt
+kallem
+paisa
+Ganapathi
+-->user@saniya:~$ awk '{print NR $1}' awkfile.txt
+1kallem
+2paisa
+3shaik
+-->user@saniya:~$ awk '{print NR,$1}' awkfile.txt
+1 kallem
+2 paisa
+3 shaik
+
+~~~~~~~~~~~***shutdown command***~~~~~~~~~~~~
+
+-->user@saniya:~$ shutdown -r now
+//shutdown -r +1
+//shutdown 18:00
+shutdown -p +5
+
+
+SORT(1)                                                                               User Commands                                                                               SORT(1)
+
+NAME
+       sort - sort lines of text files
+
+SYNOPSIS
+       sort [OPTION]... [FILE]...
+       sort [OPTION]... --files0-from=F
+
+DESCRIPTION
+       Write sorted concatenation of all FILE(s) to standard output.
+
+       With no FILE, or when FILE is -, read standard input.
+
+       Mandatory arguments to long options are mandatory for short options too.  Ordering options:
+
+       -b, --ignore-leading-blanks
+              ignore leading blanks
+
+       -d, --dictionary-order
+              consider only blanks and alphanumeric characters
+
+       -f, --ignore-case
+              fold lower case to upper case characters
+
+       -g, --general-numeric-sort
+              compare according to general numerical value
+
+       -i, --ignore-nonprinting
+              consider only printable characters
+
+       -M, --month-sort
+              compare (unknown) < 'JAN' < ... < 'DEC'
+
+       -h, --human-numeric-sort
+              compare human readable numbers (e.g., 2K 1G)
+
+       -n, --numeric-sort
+              compare according to string numerical value
+
+       -R, --random-sort
+              shuffle, but group identical keys.  See shuf(1)
+
+       --random-source=FILE
+              get random bytes from FILE
+
+       -r, --reverse
+              reverse the result of comparisons
+ Manual page sort(1) line 1/137 31% (press h for help or q to quit)
+
+
+
+       -t, --field-separator=SEP
+              use SEP instead of non-blank to blank transition
+
+       -T, --temporary-directory=DIR
+              use DIR for temporaries, not $TMPDIR or /tmp; multiple options specify multiple directories
+
+       --parallel=N
+              change the number of sorts run concurrently to N
+
+       -u, --unique
+              with -c, check for strict ordering; without -c, output only the first of an equal run
+
+       -z, --zero-terminated
+              line delimiter is NUL, not newline
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       KEYDEF  is  F[.C][OPTS][,F[.C][OPTS]] for start and stop position, where F is a field number and C a character position in the field; both are origin 1, and the stop position de‐
+       faults to the line's end.  If neither -t nor -b is in effect, characters in a field are counted from the beginning of the preceding whitespace.  OPTS is one or more single-letter
+       ordering  options  [bdfgiMhnRrV], which override global ordering options for that key.  If no key is given, use the entire line as the key.  Use --debug to diagnose incorrect key
+       usage.
+
+       SIZE may be followed by the following multiplicative suffixes: % 1% of memory, b 1, K 1024 (default), and so on for M, G, T, P, E, Z, Y.
+
+       *** WARNING *** The locale specified by the environment affects sort order.  Set LC_ALL=C to get the traditional sort order that uses native byte values.
+
+AUTHOR
+       Written by Mike Haertel and Paul Eggert.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report any translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright © 2020 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       shuf(1), uniq(1)
+
+       Full documentation <https://www.gnu.org/software/coreutils/sort>
+       or available locally via: info '(coreutils) sort invocation'
+
+GNU coreutils 8.32                                                                    February 2022                                                                               SORT(1)
+ Manual page sort(1) line 90/137 (END) (press h for help or q to quit)
+--> -P : Requests that the system be powered off after it has been brought down.
+        -->user@saniya:~$ shutdown -p +5
+--> -r : Requests that the system be rebooted after it has been broughtdown.        
+        -->user@saniya:~$ shutdown -r +5
+
+-->Reboot scheduled for Thu 2024-03-28 15:25:28 IST, use 'shutdown -c' to cancel.
+        -->user@saniya:~$ shutdown -c
