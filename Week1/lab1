@@ -1,0 +1,238 @@
+               ~~~~~~~~~~~~~~~***Basic Unix COMMANDS***~~~~~~~~~~~~~~~
+             
+1.whoami – show your username   
+-->user@saniya:~$ whoami
+user
+
+2.id – print user identity
+-->user@saniya:~$ id
+uid=1000(user) gid=1000(user) groups=1000(user),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),132(lxd),133(sambashare)
+
+3.groups – show which groups user belongs to
+-->user@saniya:~$ groups
+user adm cdrom sudo dip plugdev lpadmin lxd sambashare
+
+4.passwd – change user password
+-->user@saniya:~$ passwd
+Changing password for user.
+Current password: 
+New password: 
+Retype new password: 
+passwd: password updated successfully
+
+5.who – find out who is logged into the systeThese commands allow you to get basic information about Unix users in your environment.
+-->user@saniya:~$ who
+user     tty2         2024-04-19 20:38 (tty2)
+
+6.last – show history of logins into the system
+-->user@saniya:~$ last
+user     tty2         tty2             Fri Apr 19 20:38   still logged in
+reboot   system boot  6.5.0-26-generic Fri Apr 19 20:38   still running
+user     tty2         tty2             Fri Apr 19 18:48 - down   (00:30)
+reboot   system boot  6.5.0-26-generic Fri Apr 19 18:47 - 19:18  (00:30)
+user     tty2         tty2             Fri Apr 19 13:51 - down   (03:04)
+reboot   system boot  6.5.0-26-generic Fri Apr 19 13:50 - 16:55  (03:04)
+user     tty2         tty2             Fri Apr 19 10:53 - down   (01:10)
+reboot   system boot  6.5.0-26-generic Fri Apr 19 10:53 - 12:03  (01:10)
+user     tty2         tty2             Thu Apr 18 20:30 - down   (02:36)
+reboot   system boot  6.5.0-26-generic Thu Apr 18 20:30 - 23:07  (02:36)
+Tue Jan 30 19:33 - down   (01:49)
+  (06:55)
+    tty2         tty2             Sun Dec 17 14:34 - down   (00:23)
+wtmp begins Sat Dec  9 15:39:09 2023
+user@saniya:~$ nslookup google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.195.142
+Name:	google.com
+Address: 2404:6800:4007:81e::200e
+>>etc...
+
+
+                ~~~~~~~~~~~~~~~~***Unix file operations***~~~~~~~~~~~~~~~~
+------------>Navigating filesystem and managing files and access permissions<-------------
+
+7.cp – copy files (work in progress)          
+-->user@saniya:~$ cp file1 file2
+
+8.rm – remove files and directories (work in progress)
+-->user@saniya:~$ rm file1
+
+9.mv – rename or move files and directories to another location
+-->user@saniya:~$mv file1 file2
+
+10.chown – change file/directory ownership
+-->user@saniya:~$ chown 
+chown: missing operand
+
+
+            ~~~~~~~~~~****Unix directory management commands****~~~~~~~~~~~~
+                //////Navigating filesystems and managing directories/////
+                
+11.mkdir – make new directory
+-->user@saniya:~$ mkdir d1        
+
+12.cd – change directory
+-->user@saniya:~$ cd d1
+
+13.pwd – confirm current directory
+-->user@saniya:~/d1$ pwd
+/home/user/d1
+
+14.rmdir – remove directories in Unix
+-->user@saniya:~$ rmdir d1
+ 
+                  
+                  **********Control Commands**********
+15.Control-C: This command terminates the currently running foreground process.
+16.Control-D: This command terminates the currently running login or terminal.
+17.Control-Z: This command suspends the currently running foreground process to
+the background.
+                  
+18.ps - displays a snapshot of all current processes
+-->user@saniya:~$ ps
+    PID TTY          TIME CMD
+   6033 pts/0    00:00:00 bash
+   6252 pts/0    00:00:00 ps
+user@saniya:~$ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 20:38 ?        00:00:01 /sbin/init splash
+root           2       0  0 20:38 ?        00:00:00 [kthreadd]
+root           3       2  0 20:38 ?        00:00:00 [rcu_gp]
+root           4       2  0 20:38 ?        00:00:00 [rcu_par_gp]
+root           5       2  0 20:38 ?        00:00:00 [slub_flushwq]
+root           6       2  0 20:38 ?        00:00:00 [netns]
+root           8       2  0 20:38 ?        00:00:00 [kworker/0:0H-events_highpri]
+root          11       2  0 20:38 ?        00:00:00 [mm_percpu_wq]
+root          12       2  0 20:38 ?        00:00:00 [rcu_tasks_kthread]
+root          13       2  0 20:38 ?        00:00:00 [rcu_tasks_rude_kthread]
+root          14       2  0 20:38 ?        00:00:00 [rcu_tasks_trace_kthread]
+root          15       2  0 20:38 ?        00:00:00 [ksoftirqd/0]
+root          16       2  0 20:38 ?        00:00:03 [rcu_preempt]
+root          17       2  0 20:38 ?        00:00:00 [migration/0]
+root          18       2  0 20:38 ?        00:00:00 [idle_inject/0]
+root          19       2  0 20:38 ?        00:00:00 [cpuhp/0]
+>>etc...
+
+19.top - displays a live status of current processes   
+-->user@saniya:~$ top
+
+top - 16:26:35 up 48 min,  1 user,  load average: 0.63, 0.58, 0.47
+Tasks: 222 total,   1 running, 221 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  3.7 us,  0.8 sy,  0.0 ni, 95.3 id,  0.0 wa,  0.0 hi,  0.1 si,  0.0 st
+MiB Mem :   7711.5 total,   4512.2 free,   1637.2 used,   1562.1 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   5556.0 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND  
+   1751 user      20   0  927800  95248  46016 S   8.3   1.2   1:41.30 gedit    
+   1066 user      20   0 5243884 270760 143504 S   6.0   3.4   1:38.02 gnome-s+ 
+    147 root     -51   0       0      0      0 S   1.0   0.0   0:19.98 irq/163+ 
+    685 mysql     20   0 2373612 396068  35584 S   1.0   5.0   0:20.05 mysqld   
+   2644 user      20   0  554408  51828  39644 S   1.0   0.7   0:00.32 gnome-t+ 
+     29 root      20   0       0      0      0 S   0.3   0.0   0:00.31 ksoftir+ 
+    650 tomcat    20   0 5658020 223236  35772 S   0.3   2.8   0:11.47 java     
+   2107 root      20   0       0      0      0 I   0.3   0.0   0:00.23 kworker+ 
+   2680 user      20   0   13192   4096   3328 R   0.3   0.1   0:00.05 top      
+      1 root      20   0  166708  11624   8168 S   0.0   0.1   0:00.76 systemd  
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd 
+>>etc...
+
+20.clear – clear a terminal screen
+$ clear
+Clear all prior text from the terminal screen
+
+21.history – print history of commands in the current session
+$ history same like last command.
+
+22.touch: Create a new file or update its timestamp.                        
+-->user@saniya:~$ touch file1
+
+23.cat: Concatenate files and print to stdout.
+-->user@saniya:~$ cat >file1
+hello
+etc...
+
+24.ls: List directory contents
+-->user@saniya:~$ ls -alt
+total 280
+drwxr-xr-x 28 user user 12288 Apr 19 23:56 .
+drwxrwxr-x  2 user user  4096 Apr 19 23:56 dir1
+drwxr-xr-x  5 user user  4096 Apr 19 23:04 Downloads
+-rw-------  1 user user 30550 Apr 19 23:00 .bash_history
+drwx------ 26 user user  4096 Apr 19 22:11 .config
+drwxrwxr-x  4 user user  4096 Apr 19 15:53 .vscode
+drwxr-xr-x  5 user user  4096 Apr 18 21:25 Pictures
+drwx------ 35 user user  4096 Apr 18 18:15 .cache
+drwxr-xr-x 18 user user  4096 Apr 18 14:39 Desktop
+-rwxrwxr-x  1 user user 16056 Apr 14 10:29 a.out
+>>etc...
+
+-->user@saniya:~$ ls -a
+.               biodata.html  .gnupg        my.html                    table.html
+..              .cache        .gphoto       .mysql_history             Templates
+a.html          c.html        .java         number.txt                 .texlive2021
+a.out           .config       j.html        Pictures                   .thunderbird
+.audacity-data  DBMS          knapsack      .pki                       Videos
+awkfile.txt     Desktop       lavanya.htm   prachodyan.html            .vmware
+.bash_history   dir1          .local        .profile                   .vscode
+.bash_logout    Documents     message.html  Public                     webtechnology.html
+.bashrc         .dotnet       mouse.html    snap
+b.c             Downloads     .mozilla      .ssh
+b.html          ex.html       Music         .sudo_as_admin_successful
+
+25.which: Locate a command
+-->user@saniya:~$ which -a cat
+/usr/bin/cat
+/bin/cat
+
+26.man: Interface for working with the online reference manuals.
+-->user@saniya:~$ man
+What manual page do you want?
+For example, try 'man man'.
+user@saniya:~$ man cat
+
+[1]+  Stopped                 man cat
+
+27.sudo: Execute a command as some other user or super-user
+-->Syntax: sudo [options] [command]
+$ sudo ls /usr/local/protected
+
+28.df: Show the number of free blocks for the mounted file system
+-->user@saniya:~$ df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+tmpfs             789660     2128    787532   1% /run
+/dev/nvme0n1p2 244506940 50181108 181832776  22% /
+tmpfs            3948284        0   3948284   0% /dev/shm
+tmpfs               5120        4      5116   1% /run/lock
+efivarfs             184      125        55  70% /sys/firmware/efi/efivars
+/dev/nvme0n1p1    523248     6224    517024   2% /boot/efi
+tmpfs             789656      104    789552   1% /run/user/1000
+
+29.cal: Displays the calendar.
+-->Syntax: cal [[month] year]
+user@saniya:~$ cal
+      May 2024        
+Su Mo Tu We Th Fr Sa  
+          1  2  3  4  
+ 5  6  7  8  9 10 11  
+12 13 14 15 16 17 18  
+19 20 21 22 23 24 25  
+26 27 28 29 30 31 
+
+30.date: Displays the system date and time.    
+-->Syntax: date [+format]
+user@saniya:~$ date
+Tuesday 30 APRIL 2024 06:23:45 PM IST
+
+31.who: Displays the list of users currently logged in.
+-->user@saniya:~$ who
+user     tty2         2024-05-01 17:55 (tty2)
+
+
+                                                            ******These Are Some Basic Unix Commands******
+
+
+
